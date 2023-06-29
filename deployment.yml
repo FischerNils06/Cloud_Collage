@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collage-deployment
+  labels:
+    app: m210-page
+spec:
+  replicas: 3
+  selector:
+    matchLabels:  # wenn man das wechseln will muss man das Deployment löschen und neu erstellen
+      app: m210-page
+  template:
+    metadata:
+      labels:
+        app: m210-page
+    spec:
+      containers:
+      - name: collage-deployment
+        image: ghcr.io/fischernils06/cloud_collage:v1  #Name von GitHub kopieren
+        ports:
+        - containerPort: 8080
